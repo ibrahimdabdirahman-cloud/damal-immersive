@@ -93,6 +93,10 @@ body {
     transform: none !important;
   }
 
+  [style*="bottom: 80px"][style*="right: 60px"] {
+    display: none !important;
+  }
+
   [style*="grid-template-rows: 200px 200px"] {
     grid-template-rows: repeat(3, 190px) !important;
   }
