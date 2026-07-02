@@ -87,6 +87,12 @@ body {
     display: none !important;
   }
 
+  [style*="top:50%"][style*="right:60px"] {
+    top: 90px !important;
+    right: 18px !important;
+    transform: none !important;
+  }
+
   [style*="grid-template-rows:200px 200px"] {
     grid-template-rows: repeat(3, 190px) !important;
   }
