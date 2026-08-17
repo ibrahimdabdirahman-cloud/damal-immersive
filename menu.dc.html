@@ -60,7 +60,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     <a href="location.dc.html" style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">Location</a>
   </div>
   <a href="home.dc.html" style="position:absolute;left:50%;transform:translateX(-50%)">
-    <img src="https://damalrestaurant.uk/wp-content/uploads/2024/05/Damal-Logo-Green-417x90.png" alt="Damal" style="height:28px;object-fit:contain;filter:brightness(0) invert(1)">
+    <img src="/img/logo.png" alt="Damal" style="height:28px;object-fit:contain;filter:brightness(0) invert(1)">
   </a>
   <div style="display:flex;align-items:center;gap:14px">
     <a href="account.dc.html" style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">Sign In</a>
@@ -90,7 +90,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
       <sc-for list="{{ platters }}" as="p" hint-placeholder-count="4">
         <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;transition:border-color 0.25s,transform 0.25s" style-hover="border-color:rgba(201,168,76,0.4);transform:translateY(-3px)">
-          <div style="background:{{ p.bg }};height:130px;position:relative">
+          <div style="background:{{ p.bg }};background-size:cover;background-position:{{ p.pos }};background-repeat:no-repeat;height:130px;position:relative">
             <div style="position:absolute;top:12px;right:12px;background:#C9A84C;color:#0A1F14;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:2px">{{ p.serves }}</div>
           </div>
           <div style="padding:18px 20px">
@@ -120,7 +120,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
       <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="8">
         <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.04);transition:background 0.2s" style-hover="background:rgba(255,255,255,0.055)">
-          <div style="width:68px;height:68px;border-radius:3px;background:{{ item.gradient }};flex-shrink:0"></div>
+          <div style="width:84px;height:84px;border-radius:10px;background:{{ item.gradient }};background-size:cover;background-position:center center;background-repeat:no-repeat;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,0.4);border:1px solid rgba(201,168,76,0.18)"></div>
           <div style="flex:1;min-width:0">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px">
               <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:#fff">{{ item.name }}</div>
@@ -188,7 +188,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 </sc-if>
 
 <footer style="background:#030A06;padding:40px 60px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center">
-  <img src="https://damalrestaurant.uk/wp-content/uploads/2024/05/Damal-Logo-Green-417x90.png" alt="Damal" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.35">
+  <img src="/img/logo.png" alt="Damal" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.35">
   <div style="display:flex;gap:24px">
     <a href="home.dc.html" style="font-size:12px;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">Home</a>
     <a href="about.dc.html" style="font-size:12px;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">About</a>
@@ -213,48 +213,48 @@ class Component extends DCLogic {
 
   get allItems() {
     return [
-      {id:1,cat:'breakfast',name:'Ful Medames',desc:'Fava beans with Somali herbs & spices',price:6,tag:'vegetarian'},
-      {id:2,cat:'breakfast',name:'Lamb Kidney',desc:'Traditional Somali breakfast',price:7,tag:''},
-      {id:3,cat:'breakfast',name:'Beef Sogaar & Bread',desc:'Spiced beef with freshly baked bread',price:7,tag:''},
-      {id:4,cat:'mains',name:'Haniid',desc:'Slow-cooked lamb shank — our signature dish',price:13,tag:'signature'},
-      {id:5,cat:'mains',name:'Quarter Chicken',desc:'Served with rice or pasta',price:9,tag:''},
-      {id:6,cat:'mains',name:'Salmon Fish',desc:'Served with rice or pasta',price:11,tag:''},
-      {id:7,cat:'mains',name:'Beef Sogaar',desc:'Served with rice or pasta',price:10,tag:''},
-      {id:8,cat:'mains',name:'Chicken Sogaar',desc:'Served with rice or pasta',price:10,tag:''},
-      {id:9,cat:'mains',name:'Beef Steak',desc:'Served with rice or pasta',price:11,tag:''},
-      {id:10,cat:'mains',name:'Chicken Steak',desc:'Served with rice or pasta',price:11,tag:''},
-      {id:15,cat:'sides',name:'Sabaayad',desc:'Somali flatbread, similar to Paratha',price:2,tag:''},
-      {id:16,cat:'sides',name:'Canjeero',desc:'Spongy pancake-like bread',price:2,tag:''},
-      {id:17,cat:'sides',name:'Malwaax',desc:'Traditional sweet Somali pancake',price:1,tag:'sweet'},
-      {id:18,cat:'sides',name:'Sambusa',desc:'Crispy pastry with spiced meat',price:1.5,tag:''},
-      {id:19,cat:'sides',name:'Rice',desc:'',price:6,tag:''},
-      {id:20,cat:'sides',name:'Pasta',desc:'',price:6,tag:''},
-      {id:21,cat:'drinks',name:'Mango Lassi',desc:'Our signature drink',price:3.5,tag:'signature'},
-      {id:22,cat:'drinks',name:'Shani',desc:'Berry-flavoured carbonated drink',price:2,tag:''},
-      {id:23,cat:'drinks',name:'Soft Drinks',desc:'Fanta, Sprite, Rio, Rubicon',price:1.5,tag:''},
-      {id:24,cat:'drinks',name:'Juices',desc:'Mango, Guava, Cocktail',price:2,tag:''},
-      {id:25,cat:'drinks',name:'Somali Tea',desc:'Traditional spiced tea',price:1.5,tag:''},
-      {id:26,cat:'drinks',name:'Cappuccino / Coffee',desc:'',price:2,tag:''},
-      {id:27,cat:'desserts',name:'Oreo Milk Cake',desc:'',price:5,tag:''},
-      {id:28,cat:'desserts',name:'Lotus Biscoff Cake',desc:'',price:5,tag:''},
-      {id:29,cat:'desserts',name:'Kinder Bueno Cake',desc:'',price:5,tag:''},
-      {id:30,cat:'desserts',name:'Ferrero Rocher Cake',desc:'',price:5,tag:''}
+      {id:1,cat:'breakfast',name:'Ful Medames',desc:'Fava beans with Somali herbs & spices',price:6,tag:'vegetarian',img:'/img/ful-medames.jpg'},
+      {id:2,cat:'breakfast',name:'Lamb Kidney',desc:'Traditional Somali breakfast',price:7,tag:'',img:'/img/lamb-kidney.jpg'},
+      {id:3,cat:'breakfast',name:'Beef Sogaar & Bread',desc:'Spiced beef with freshly baked bread',price:7,tag:'',img:'/img/beef-sogaar.jpg'},
+      {id:4,cat:'mains',name:'Haniid',desc:'Slow-cooked lamb shank — our signature dish',price:13,tag:'signature',img:'/img/haniid.jpg'},
+      {id:5,cat:'mains',name:'Quarter Chicken',desc:'Served with rice or pasta',price:9,tag:'',img:'/img/chicken.jpg'},
+      {id:6,cat:'mains',name:'Salmon Fish',desc:'Served with rice or pasta',price:11,tag:'',img:'/img/salmon.jpg'},
+      {id:7,cat:'mains',name:'Beef Sogaar',desc:'Served with rice or pasta',price:10,tag:'',img:'/img/beef-sogaar.jpg'},
+      {id:8,cat:'mains',name:'Chicken Sogaar',desc:'Served with rice or pasta',price:10,tag:'',img:'/img/chicken.jpg'},
+      {id:9,cat:'mains',name:'Beef Steak',desc:'Served with rice or pasta',price:11,tag:'',img:'/img/mains-plate.jpg'},
+      {id:10,cat:'mains',name:'Chicken Steak',desc:'Served with rice or pasta',price:11,tag:'',img:'/img/chicken.jpg'},
+      {id:15,cat:'sides',name:'Sabaayad',desc:'Somali flatbread, similar to Paratha',price:2,tag:'',img:'/img/sabaayad.jpg'},
+      {id:16,cat:'sides',name:'Canjeero',desc:'Spongy pancake-like bread',price:2,tag:'',img:'/img/canjeero.jpg'},
+      {id:17,cat:'sides',name:'Malwaax',desc:'Traditional sweet Somali pancake',price:1,tag:'sweet',img:'/img/malwaax.jpg'},
+      {id:18,cat:'sides',name:'Sambusa',desc:'Crispy pastry with spiced meat',price:1.5,tag:'',img:'/img/sambusa.jpg'},
+      {id:19,cat:'sides',name:'Rice',desc:'Fragrant Somali spiced basmati',price:6,tag:'',img:'/img/rice-plate.jpg'},
+      {id:20,cat:'sides',name:'Pasta',desc:'Somali-style seasoned pasta',price:6,tag:'',img:'/img/mains-plate.jpg'},
+      {id:21,cat:'drinks',name:'Mango Lassi',desc:'Our signature drink',price:3.5,tag:'signature',img:'/img/mango-lassi.jpg'},
+      {id:22,cat:'drinks',name:'Shani',desc:'Berry-flavoured carbonated drink',price:2,tag:'',img:'/img/shani.jpg'},
+      {id:23,cat:'drinks',name:'Soft Drinks',desc:'Fanta, Sprite, Rio, Rubicon',price:1.5,tag:'',img:'/img/soft-drinks.jpg'},
+      {id:24,cat:'drinks',name:'Juices',desc:'Mango, Guava, Cocktail',price:2,tag:'',img:'/img/juices.jpg'},
+      {id:25,cat:'drinks',name:'Somali Tea',desc:'Traditional spiced tea',price:1.5,tag:'',img:'/img/somali-tea.jpg'},
+      {id:26,cat:'drinks',name:'Cappuccino / Coffee',desc:'Freshly brewed',price:2,tag:'',img:'/img/cappuccino.jpg'},
+      {id:27,cat:'desserts',name:'Oreo Milk Cake',desc:'Soaked milk cake, Oreo crumb',price:5,tag:'',img:'/img/cake-oreo.jpg'},
+      {id:28,cat:'desserts',name:'Lotus Biscoff Cake',desc:'Soaked milk cake, Biscoff topping',price:5,tag:'',img:'/img/cake-lotus.jpg'},
+      {id:29,cat:'desserts',name:'Kinder Bueno Cake',desc:'Soaked milk cake, Kinder Bueno',price:5,tag:'',img:'/img/cake-choc.jpg'},
+      {id:30,cat:'desserts',name:'Ferrero Rocher Cake',desc:'Soaked milk cake, Ferrero Rocher',price:5,tag:'',img:'/img/cake-choc.jpg'}
     ];
   }
 
   plattersData = [
-    {id:11,name:'1–2 People Platter',desc:'Lambshank, Quarter Chicken, Beef Sogaar · with rice',price:30.99,serves:'Serves 1–2',bg:'radial-gradient(ellipse at 40% 50%,rgba(155,68,14,0.85),rgba(78,34,6,0.9),#100500)'},
-    {id:12,name:'2–3 People Platter',desc:'Lambshank ×2, Quarter Chicken, Beef Sogaar · with rice',price:38.99,serves:'Serves 2–3',bg:'radial-gradient(ellipse at 40% 50%,rgba(135,58,12,0.85),rgba(65,28,4,0.9),#0D0400)'},
-    {id:13,name:'4–5 People Platter',desc:'Lambshank ×3, Quarter Chicken, Beef Sogaar · with rice',price:49.99,serves:'Serves 4–5',bg:'radial-gradient(ellipse at 40% 50%,rgba(155,88,12,0.85),rgba(78,44,2,0.9),#0F0700)'},
-    {id:14,name:'Mega Fusion Platter',desc:'Lambshank ×5, Quarter Chicken ×3, Beef Sogaar · with rice',price:79.99,serves:'Feeds 6+',bg:'radial-gradient(ellipse at 40% 50%,rgba(120,50,10,0.85),rgba(60,24,2,0.9),#0C0400)'}
+    {id:11,name:'1–2 People Platter',desc:'Lambshank, Quarter Chicken, Beef Sogaar · with rice',price:30.99,serves:'Serves 1–2',bg:'linear-gradient(to top,rgba(3,10,6,0.5),transparent 60%),url(/img/platter-1.jpg)',pos:'center center'},
+    {id:12,name:'2–3 People Platter',desc:'Lambshank ×2, Quarter Chicken, Beef Sogaar · with rice',price:38.99,serves:'Serves 2–3',bg:'linear-gradient(to top,rgba(3,10,6,0.5),transparent 60%),url(/img/food-spread.jpg)',pos:'center center'},
+    {id:13,name:'4–5 People Platter',desc:'Lambshank ×3, Quarter Chicken, Beef Sogaar · with rice',price:49.99,serves:'Serves 4–5',bg:'linear-gradient(to top,rgba(3,10,6,0.5),transparent 60%),url(/img/platter-3.jpg)',pos:'center center'},
+    {id:14,name:'Mega Fusion Platter',desc:'Lambshank ×5, Quarter Chicken ×3, Beef Sogaar · with rice',price:79.99,serves:'Feeds 6+',bg:'linear-gradient(to top,rgba(3,10,6,0.5),transparent 60%),url(/img/platter-mega.jpg)',pos:'center center'}
   ];
 
   gradients = {
-    breakfast:'radial-gradient(ellipse at center,rgba(175,94,26,0.88),rgba(78,34,6,0.94),#0E0600)',
-    mains:'radial-gradient(ellipse at center,rgba(134,54,14,0.88),rgba(56,20,2,0.94),#0C0402)',
-    sides:'radial-gradient(ellipse at center,rgba(92,70,40,0.88),rgba(44,30,10,0.94),#160E04)',
-    drinks:'radial-gradient(ellipse at center,rgba(40,100,72,0.88),rgba(22,52,36,0.94),#060E08)',
-    desserts:'radial-gradient(ellipse at center,rgba(172,112,36,0.88),rgba(96,56,16,0.94),#160600)'
+    breakfast:'url(/img/mains-plate.jpg)',
+    mains:'url(/img/beef-sogaar.jpg)',
+    sides:'url(/img/mains-plate.jpg)',
+    drinks:'url(/img/food-spread.jpg)',
+    desserts:'url(/img/food-spread.jpg)'
   };
 
   fmt(p) { return `£${Number.isInteger(p)?p:p.toFixed(2)}`; }
@@ -288,7 +288,7 @@ class Component extends DCLogic {
       onClick: ()=>this.setState({activeCategory:cat})
     }));
     const filtered = activeCategory==='all'?this.allItems:this.allItems.filter(i=>i.cat===activeCategory);
-    const menuItems = filtered.map(item=>({...item,priceStr:this.fmt(item.price),hasTag:item.tag!=='',gradient:this.gradients[item.cat]||this.gradients.mains,onAdd:()=>this.addItem(item)}));
+    const menuItems = filtered.map(item=>({...item,priceStr:this.fmt(item.price),hasTag:item.tag!=='',gradient:item.img?`url(${item.img})`:(this.gradients[item.cat]||this.gradients.mains),onAdd:()=>this.addItem(item)}));
     const cartCount = this.cartCount;
     const cartItems = cart.map(ci=>({...ci,priceStr:this.fmt(ci.price),lineStr:this.fmt(ci.price*ci.qty),onAdd:()=>this.addItem(ci),onRemove:()=>this.removeItem(ci.id)}));
     const platters = this.plattersData.map(p=>({...p,priceStr:this.fmt(p.price),onAdd:()=>this.addItem({...p,cat:'platters',tag:'platter'})}));

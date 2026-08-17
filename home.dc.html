@@ -59,7 +59,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 
 <!-- NAV -->
 <nav style="position:fixed;top:0;left:0;right:0;z-index:300;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(10,31,20,0.95),transparent);backdrop-filter:blur(4px)">
-  <img src="https://damalrestaurant.uk/wp-content/uploads/2024/05/Damal-Logo-Green-417x90.png" alt="Damal" style="height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.9">
+  <img src="/img/logo.png" alt="Damal" style="height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.9">
   <div style="display:flex;align-items:center;gap:40px">
     <a href="menu.dc.html" style="font-size:12px;font-weight:500;letter-spacing:0.5px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">Menu</a>
     <a href="about.dc.html" style="font-size:12px;font-weight:500;letter-spacing:0.5px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s" style-hover="color:#fff">About</a>
@@ -80,7 +80,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 </nav>
 
 <!-- HERO: Full-screen -->
-<section style="min-height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:radial-gradient(ellipse 90% 70% at 62% 36%, rgba(152,68,14,0.55) 0%, transparent 55%),radial-gradient(ellipse 60% 80% at 20% 75%, rgba(45,106,79,0.2) 0%, transparent 48%),linear-gradient(150deg,#060F0A 0%,#0F2818 40%,#060F0A 100%)">
+<section style="min-height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(to bottom,rgba(3,10,6,0.16),rgba(3,10,6,0.72)),url('/img/venue-booth.jpg');background-size:cover;background-position:center 44%;background-repeat:no-repeat">
   <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,31,20,0.98) 0%, rgba(10,31,20,0.55) 35%, rgba(10,31,20,0.15) 65%, transparent 100%)"></div>
   <!-- Decorative circles -->
   <div style="position:absolute;top:15%;right:8%;width:320px;height:320px;border-radius:50%;border:1px solid rgba(201,168,76,0.08);pointer-events:none"></div>
@@ -173,11 +173,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
       <sc-for list="{{ menuItems }}" as="item" hint-placeholder-count="6">
         <div style="display:flex;align-items:center;gap:18px;padding:20px 24px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.04);transition:background 0.2s" style-hover="background:rgba(255,255,255,0.055)">
-          <div style="width:72px;height:72px;border-radius:3px;background:{{ item.gradient }};flex-shrink:0;position:relative;overflow:hidden">
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-              <div style="font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.18)">photo</div>
-            </div>
-          </div>
+          <div style="width:72px;height:72px;border-radius:3px;background:{{ item.gradient }};background-size:cover;background-position:center center;background-repeat:no-repeat;flex-shrink:0;position:relative;overflow:hidden"></div>
           <div style="flex:1;min-width:0">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
               <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.name }}</div>
@@ -251,10 +247,10 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     </div>
     <button style="align-self:flex-start;background:#2D6A4F;color:#fff;border:none;border-radius:2px;padding:14px 34px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s" style-hover="background:#40916C" onClick="{{ addHaniid }}">Add to Order</button>
   </div>
-  <div style="background:radial-gradient(ellipse 78% 82% at 44% 48%, rgba(158,72,16,0.94) 0%, rgba(88,38,8,0.9) 44%, #160802 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+  <div style="background:linear-gradient(90deg,rgba(3,10,6,0.08),rgba(3,10,6,0.5)),url('/img/beef-sogaar.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
     <div style="font-family:'Cormorant Garamond',serif;font-size:130px;font-weight:700;color:rgba(255,255,255,0.05);line-height:1;user-select:none;position:absolute">Haniid</div>
     <div style="position:absolute;top:24px;right:24px;background:#C9A84C;color:#0A1F14;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:2px">Signature Dish</div>
-    <div style="position:absolute;bottom:20px;left:22px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2)">food photography</div>
+    <div style="position:absolute;bottom:20px;left:22px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.72)">From the Damal kitchen</div>
   </div>
 </section>
 
@@ -270,14 +266,14 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     </div>
     <!-- Photo grid -->
     <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:10px">
-      <div style="background:radial-gradient(ellipse at 40% 60%, #2D5E3F, #122415);border-radius:3px;grid-row:span 2;display:flex;align-items:flex-end;padding:16px;overflow:hidden;position:relative">
+      <div style="background:linear-gradient(to top,rgba(3,10,6,0.72),transparent 58%),url('/img/venue-booth.jpg');background-size:cover;background-position:center 44%;background-repeat:no-repeat;border-radius:3px;grid-row:span 2;display:flex;align-items:flex-end;padding:16px;overflow:hidden;position:relative">
         <div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:rgba(255,255,255,0.05);position:absolute;bottom:-12px;right:-4px;user-select:none;line-height:1">Damal</div>
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);position:relative">Restaurant</div>
       </div>
-      <div style="background:radial-gradient(ellipse at center, rgba(155,70,15,0.8), #1A0A02);border-radius:3px;display:flex;align-items:flex-end;padding:16px">
+      <div style="background:linear-gradient(to top,rgba(3,10,6,0.72),transparent 58%),url('/img/beef-sogaar.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;border-radius:3px;display:flex;align-items:flex-end;padding:16px">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2)">Kitchen</div>
       </div>
-      <div style="background:radial-gradient(ellipse at center, rgba(80,55,30,0.8), #180F05);border-radius:3px;display:flex;align-items:flex-end;padding:16px">
+      <div style="background:linear-gradient(to top,rgba(3,10,6,0.72),transparent 58%),url('/img/group.jpg');background-size:cover;background-position:center 38%;background-repeat:no-repeat;border-radius:3px;display:flex;align-items:flex-end;padding:16px">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2)">Team</div>
       </div>
     </div>
@@ -295,14 +291,14 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
       <a href="gallery.dc.html" style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.12);padding-bottom:3px;transition:color 0.2s" style-hover="color:#fff">View All →</a>
     </div>
     <div style="display:grid;grid-template-columns:1.7fr 1fr 1fr;grid-template-rows:220px 220px;gap:10px">
-      <div style="grid-row:span 2;background:radial-gradient(ellipse 70% 80% at 40% 50%, rgba(155,68,14,0.85), rgba(80,36,6,0.9), #0F0500);border-radius:3px;position:relative;overflow:hidden;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.85">
+      <div style="grid-row:span 2;background:linear-gradient(to top,rgba(3,10,6,0.58),transparent 55%),url('/img/venue-stage.jpg');background-size:cover;background-position:center 32%;background-repeat:no-repeat;border-radius:3px;position:relative;overflow:hidden;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.85">
         <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,31,20,0.6) 0%, transparent 50%)"></div>
-        <div style="position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;font-style:italic">Haniid — Lamb Shank</div>
+        <div style="position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;font-style:italic">Wedding celebrations at Damal</div>
       </div>
-      <div style="background:radial-gradient(ellipse at center, rgba(45,106,79,0.7), #0A1F14);border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8;"></div>
-      <div style="background:radial-gradient(ellipse at center, rgba(140,60,15,0.7), #100500);border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
-      <div style="background:radial-gradient(ellipse at center, rgba(100,75,40,0.7), #180E04);border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
-      <div style="background:radial-gradient(ellipse at center, rgba(30,80,55,0.7), #081510);border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
+      <div style="background:url('/img/haniid.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8;"></div>
+      <div style="background:url('/img/sambusa.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
+      <div style="background:url('/img/salmon.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
+      <div style="background:url('/img/venue-bar.jpg');background-size:cover;background-position:center center;background-repeat:no-repeat;border-radius:3px;cursor:pointer;transition:opacity 0.2s" style-hover="opacity:0.8"></div>
     </div>
   </div>
 </section>
@@ -354,7 +350,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 
 <!-- BANQUETING -->
 <section style="background:#0A1F14;padding:64px 60px;border-top:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:60px;justify-content:center">
-  <img src="https://damalrestaurant.uk/wp-content/uploads/2024/11/DB-Logo-150x150.png" alt="Damal Banqueting" style="width:68px;height:68px;object-fit:contain;opacity:0.7">
+  <img src="/img/db-logo.png" alt="Damal Banqueting" style="width:68px;height:68px;object-fit:contain;opacity:0.7">
   <div>
     <div style="font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;margin-bottom:10px">Sister Venue</div>
     <div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#fff;margin-bottom:8px">Damal Banqueting</div>
@@ -405,7 +401,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 <footer style="background:#030A06;padding:68px 60px 32px">
   <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;max-width:1280px;margin:0 auto;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.04)">
     <div>
-      <img src="https://damalrestaurant.uk/wp-content/uploads/2024/05/Damal-Logo-Green-417x90.png" alt="Damal" style="height:24px;object-fit:contain;opacity:0.45;margin-bottom:20px;display:block;filter:brightness(0) invert(1)">
+      <img src="/img/logo.png" alt="Damal" style="height:24px;object-fit:contain;opacity:0.45;margin-bottom:20px;display:block;filter:brightness(0) invert(1)">
       <p style="font-size:13px;line-height:1.85;color:rgba(255,255,255,0.2);max-width:200px;margin-bottom:28px">Authentic Somali cuisine in the heart of East London.</p>
       <div style="display:flex;gap:16px">
         <a href="https://www.instagram.com/damalrestaurant/" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.22);text-decoration:none;transition:color 0.2s" style-hover="color:#C9A84C">IG</a>
@@ -494,12 +490,12 @@ class Component extends DCLogic {
   }
 
   gradients = {
-    breakfast: 'radial-gradient(ellipse at center, rgba(175,94,26,0.88), rgba(78,34,6,0.94), #0E0600)',
-    mains:     'radial-gradient(ellipse at center, rgba(134,54,14,0.88), rgba(56,20,2,0.94), #0C0402)',
-    platters:  'radial-gradient(ellipse at center, rgba(154,94,14,0.88), rgba(74,44,0,0.94), #0E0800)',
-    sides:     'radial-gradient(ellipse at center, rgba(92,70,40,0.88), rgba(44,30,10,0.94), #160E04)',
-    drinks:    'radial-gradient(ellipse at center, rgba(40,100,72,0.88), rgba(22,52,36,0.94), #060E08)',
-    desserts:  'radial-gradient(ellipse at center, rgba(172,112,36,0.88), rgba(96,56,16,0.94), #160600)'
+    breakfast: 'url(/img/ful-medames.jpg)',
+    mains:     'url(/img/haniid.jpg)',
+    platters:  'url(/img/food-spread.jpg)',
+    sides:     'url(/img/sabaayad.jpg)',
+    drinks:    'url(/img/mango-lassi.jpg)',
+    desserts:  'url(/img/cake-lotus.jpg)'
   };
 
   componentDidMount() {
