@@ -95,15 +95,16 @@
 .mzf-chips button{border:1px solid #ddd;background:#fafafa;border-radius:10px;padding:9px 14px;cursor:pointer;font:600 14px/1 inherit}
 .mzf-chips button.mzf-on{background:var(--mzf-accent);color:#fff;border-color:var(--mzf-accent)}
 .mzf-stars{display:flex;gap:4px;font-size:30px;color:#ddd;cursor:pointer}
-.mzf-stars span.mzf-lit{color:#e0a528}
+.mzf-stars button{background:none;border:0;padding:0 2px;margin:0;font:inherit;line-height:1.1;color:inherit;cursor:pointer;border-radius:6px}
+.mzf-stars button.mzf-lit{color:#e0a528}
 .mzf-menu{border:1px solid #eee;border-radius:12px;overflow:hidden;margin-bottom:12px}
-.mzf-cat{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#888;background:#f7f7f7;padding:8px 12px}
+.mzf-cat{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#666;background:#f7f7f7;padding:8px 12px}
 .mzf-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid #f0f0f0}
 .mzf-item .mzf-nm{flex:1}.mzf-item .mzf-pr{color:#666;font-variant-numeric:tabular-nums}
 .mzf-step{display:flex;align-items:center;gap:8px}
 .mzf-step button{width:28px;height:28px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:16px;cursor:pointer;line-height:1}
 .mzf-step span{min-width:18px;text-align:center;font-weight:700}
-.mzf-total{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:17px;margin:6px 2px 14px}
+.mzf-total{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:17px;margin:6px -2px 14px;padding:12px 4px;position:sticky;bottom:0;background:#fff;border-top:1px solid #eee;z-index:1}
 .mzf-btn{width:100%;border:0;background:var(--mzf-accent);color:#fff;border-radius:12px;padding:14px;font:800 16px/1 inherit;cursor:pointer}
 .mzf-btn[disabled]{opacity:.6;cursor:default}
 .mzf-status{margin-top:12px;font-size:14px;min-height:1em;text-align:center}
@@ -122,7 +123,12 @@
   }
 
   /* ---------- form builders ---------- */
-  function field(label, inner) { return '<div class="mzf-field"><label>' + label + "</label>" + inner + "</div>"; }
+  // Every control gets an id its <label for> points at, so screen readers announce "Your name, edit text" not just "edit text".
+  var fieldSeq = 0;
+  function field(label, inner) {
+    var id = "mzf-f" + (++fieldSeq);
+    return '<div class="mzf-field"><label for="' + id + '">' + label + "</label>" + inner.replace(/^<(input|textarea|select)/, '<$1 id="' + id + '"') + "</div>";
+  }
   function contactFields() {
     // Wrapped in a single element so el() (which keeps only the first child) keeps both.
     return '<div class="mzf-contact">' +
@@ -147,7 +153,7 @@
         cats[c].forEach(function (it) {
           html += '<div class="mzf-item" data-i="' + it._i + '"><span class="mzf-nm">' + esc(it.name) + '</span>' +
             (it.price ? '<span class="mzf-pr">' + money(it.price) + "</span>" : "") +
-            '<span class="mzf-step"><button type="button" class="mzf-dec">−</button><span class="mzf-q">0</span><button type="button" class="mzf-inc">+</button></span></div>';
+            '<span class="mzf-step"><button type="button" class="mzf-dec" aria-label="Remove one ' + esc(it.name) + '">−</button><span class="mzf-q" aria-live="polite">0</span><button type="button" class="mzf-inc" aria-label="Add one ' + esc(it.name) + '">+</button></span></div>';
         });
       });
       html += "</div>";
@@ -234,18 +240,18 @@
 
   function buildReview() {
     var f = el('<form class="mzf-form" novalidate></form>');
-    f.appendChild(el('<div class="mzf-field"><label>Your rating</label><div class="mzf-stars" data-stars>' +
-      [1, 2, 3, 4, 5].map(function (n) { return '<span data-v="' + n + '">★</span>'; }).join("") + "</div></div>"));
+    f.appendChild(el('<div class="mzf-field"><label id="mzf-rating-lbl">Your rating</label><div class="mzf-stars" data-stars role="group" aria-labelledby="mzf-rating-lbl">' +
+      [1, 2, 3, 4, 5].map(function (n) { return '<button type="button" data-v="' + n + '" aria-pressed="false" aria-label="' + n + (n === 1 ? " star" : " stars") + '">★</button>'; }).join("") + "</div></div>"));
     f.appendChild(el(field("Title (optional)", '<input name="title" maxlength="120" placeholder="Lovely food, warm welcome">')));
     f.appendChild(el(field("Your review", '<textarea name="body" rows="3" required placeholder="Tell others about your visit…"></textarea>')));
     f.appendChild(el(field("Your name", '<input name="name" required autocomplete="name">')));
     f.appendChild(el(hp()));
     f.appendChild(el('<button class="mzf-btn" type="submit">Submit review</button>'));
     f.appendChild(el('<div class="mzf-status" role="status"></div>'));
-    var rating = 0; var stars = f.querySelectorAll("[data-stars] span");
+    var rating = 0; var stars = f.querySelectorAll("[data-stars] button");
     f.querySelector("[data-stars]").addEventListener("click", function (e) {
-      var sp = e.target.closest("span"); if (!sp) return; rating = +sp.getAttribute("data-v");
-      stars.forEach(function (s) { s.classList.toggle("mzf-lit", +s.getAttribute("data-v") <= rating); });
+      var sp = e.target.closest("button"); if (!sp) return; rating = +sp.getAttribute("data-v");
+      stars.forEach(function (s) { var v = +s.getAttribute("data-v"); s.classList.toggle("mzf-lit", v <= rating); s.setAttribute("aria-pressed", String(v === rating)); });
     });
     bindSubmit(f, "review", function () { return { rating: rating, title: val(f, "title"), body: val(f, "body"), name: val(f, "name") }; });
     return f;
@@ -278,8 +284,8 @@
   var overlay, modalBody, tabsEl;
   function ensureModal() {
     if (overlay) return;
-    overlay = el('<div class="mzf-overlay" role="dialog" aria-modal="true"><div class="mzf-modal">' +
-      '<div class="mzf-head"><h3>' + esc(state.name || "Get in touch") + '</h3><button class="mzf-x" aria-label="Close">×</button></div>' +
+    overlay = el('<div class="mzf-overlay" role="dialog" aria-modal="true" aria-labelledby="mzf-title"><div class="mzf-modal">' +
+      '<div class="mzf-head"><h3 id="mzf-title">' + esc(state.name || "Get in touch") + '</h3><button class="mzf-x" aria-label="Close">×</button></div>' +
       '<div class="mzf-tabs"></div><div class="mzf-body"></div></div></div>');
     document.body.appendChild(overlay);
     tabsEl = overlay.querySelector(".mzf-tabs");
