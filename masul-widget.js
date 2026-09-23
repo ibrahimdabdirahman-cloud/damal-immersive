@@ -22,6 +22,18 @@
   var API = window.MASUL_API_BASE || (LOCAL ? "http://localhost:3000" : "https://masul-forms-backend.vercel.app");
   var SITE = window.MASUL_SITE_ID || "";
   var ACCENT = window.MASUL_ACCENT || "#b8472a";
+  // Text on accent-filled controls: white or near-black, whichever reads better on this accent.
+  var ON_ACCENT = (function (c) {
+    var m = /^#?([0-9a-f]{6}|[0-9a-f]{3})$/i.exec(String(c).trim());
+    if (!m) return "#fff";
+    var h = m[1].length === 3 ? m[1].replace(/./g, "$&$&") : m[1];
+    var lum = [0, 2, 4].map(function (i) {
+      var v = parseInt(h.substr(i, 2), 16) / 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    var L = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2];
+    return 1.05 / (L + 0.05) >= (L + 0.05) / 0.0616 ? "#fff" : "#1c1c1c";
+  })(ACCENT);
   var MENU = Array.isArray(window.MASUL_MENU) ? window.MASUL_MENU : [];
   var SERVICES = Array.isArray(window.MASUL_SERVICES) ? window.MASUL_SERVICES : [];
   var LABELS = {
@@ -71,7 +83,7 @@
     if (document.getElementById("mzf-css")) return;
     var css = `
 .mzf-launch{position:fixed;right:18px;bottom:18px;z-index:2147483000;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:80vw}
-.mzf-launch button{font:600 15px/1 system-ui,Segoe UI,Arial,sans-serif;color:#fff;background:var(--mzf-accent);border:0;border-radius:999px;padding:13px 20px;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;transition:transform .12s ease,filter .12s}
+.mzf-launch button{font:600 15px/1 system-ui,Segoe UI,Arial,sans-serif;color:var(--mzf-on-accent);background:var(--mzf-accent);border:0;border-radius:999px;padding:13px 20px;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;transition:transform .12s ease,filter .12s}
 .mzf-launch button:hover{transform:translateY(-1px);filter:brightness(1.05)}
 .mzf-launch button.mzf-ghost{background:#fff;color:#222;border:1px solid rgba(0,0,0,.12)}
 .mzf-overlay{position:fixed;inset:0;z-index:2147483600;background:rgba(15,17,21,.55);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
@@ -84,7 +96,7 @@
 .mzf-x{border:0;background:#f1f1f1;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;line-height:1}
 .mzf-tabs{display:flex;gap:6px;padding:12px 14px 0;flex-wrap:wrap}
 .mzf-tabs button{border:0;background:#f3f3f3;color:#444;border-radius:999px;padding:8px 14px;font:600 13px/1 inherit;cursor:pointer}
-.mzf-tabs button.mzf-active{background:var(--mzf-accent);color:#fff}
+.mzf-tabs button.mzf-active{background:var(--mzf-accent);color:var(--mzf-on-accent)}
 .mzf-body{padding:14px 18px 22px}
 .mzf-field{margin:0 0 12px}
 .mzf-field label{display:block;font-size:12px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:#666;margin:0 0 5px}
@@ -93,7 +105,7 @@
 .mzf-row{display:flex;gap:10px}.mzf-row>*{flex:1}
 .mzf-chips{display:flex;gap:8px;flex-wrap:wrap}
 .mzf-chips button{border:1px solid #ddd;background:#fafafa;border-radius:10px;padding:9px 14px;cursor:pointer;font:600 14px/1 inherit}
-.mzf-chips button.mzf-on{background:var(--mzf-accent);color:#fff;border-color:var(--mzf-accent)}
+.mzf-chips button.mzf-on{background:var(--mzf-accent);color:var(--mzf-on-accent);border-color:var(--mzf-accent)}
 .mzf-stars{display:flex;gap:4px;font-size:30px;color:#ddd;cursor:pointer}
 .mzf-stars button{background:none;border:0;padding:0 2px;margin:0;font:inherit;line-height:1.1;color:inherit;cursor:pointer;border-radius:6px}
 .mzf-stars button.mzf-lit{color:#e0a528}
@@ -105,12 +117,12 @@
 .mzf-step button{width:28px;height:28px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:16px;cursor:pointer;line-height:1}
 .mzf-step span{min-width:18px;text-align:center;font-weight:700}
 .mzf-total{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:17px;margin:6px -2px 14px;padding:12px 4px;position:sticky;bottom:0;background:#fff;border-top:1px solid #eee;z-index:1}
-.mzf-btn{width:100%;border:0;background:var(--mzf-accent);color:#fff;border-radius:12px;padding:14px;font:800 16px/1 inherit;cursor:pointer}
+.mzf-btn{width:100%;border:0;background:var(--mzf-accent);color:var(--mzf-on-accent);border-radius:12px;padding:14px;font:800 16px/1 inherit;cursor:pointer}
 .mzf-btn[disabled]{opacity:.6;cursor:default}
 .mzf-status{margin-top:12px;font-size:14px;min-height:1em;text-align:center}
 .mzf-status[data-k="err"]{color:#c0392b;font-weight:600}.mzf-status[data-k="ok"]{color:#1f8a4c;font-weight:600}.mzf-status[data-k="pending"]{color:#888}
 .mzf-done{text-align:center;padding:26px 10px}
-.mzf-done .mzf-tick{width:54px;height:54px;border-radius:50%;background:var(--mzf-accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px}
+.mzf-done .mzf-tick{width:54px;height:54px;border-radius:50%;background:var(--mzf-accent);color:var(--mzf-on-accent);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px}
 .mzf-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .masul-review{margin:0 0 14px;padding:16px 18px;border-radius:12px;background:rgba(0,0,0,.04)}
 .masul-stars{letter-spacing:2px;color:#e0a528}.masul-review-title{font-weight:700;margin:6px 0 4px}
@@ -118,7 +130,7 @@
 `;
     var s = document.createElement("style");
     s.id = "mzf-css";
-    s.textContent = ":root{--mzf-accent:" + ACCENT + "}" + css;
+    s.textContent = ":root{--mzf-accent:" + ACCENT + ";--mzf-on-accent:" + ON_ACCENT + "}" + css;
     document.head.appendChild(s);
   }
 
