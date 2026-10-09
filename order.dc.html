@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +17,23 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://damal-immersive.vercel.app/og-thumb.jpg" />
+<!-- seo:start (title/description live here, not in <helmet>, so crawlers and link previews see them without JS) -->
+<title>Order Online · Damal Restaurant · East London</title>
+<meta name="description" content="Order authentic Somali food from Damal Restaurant for delivery or collection — Haniid, sogaar, sharing platters and more from 110 Mile End Road, London E1 4UN.">
+<link rel="canonical" href="https://damal-immersive.vercel.app/order">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Damal Restaurant">
+<meta property="og:title" content="Order Online · Damal Restaurant · East London">
+<meta property="og:description" content="Order authentic Somali food from Damal Restaurant for delivery or collection — Haniid, sogaar, sharing platters and more from 110 Mile End Road, London E1 4UN.">
+<meta property="og:url" content="https://damal-immersive.vercel.app/order">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:title" content="Order Online · Damal Restaurant · East London">
+<meta name="twitter:description" content="Order authentic Somali food from Damal Restaurant for delivery or collection — Haniid, sogaar, sharing platters and more from 110 Mile End Road, London E1 4UN.">
+<!-- seo:end -->
 </head>
 <body>
 <x-dc>
 <helmet>
-  <title>Damal Restaurant · Authentic Somali Cuisine · East London</title>
-  <meta name="description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu & Hargeisa.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230A1F14'/><text x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23F0E6C8' text-anchor='middle'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -47,6 +58,13 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     [style*="font-size: 120px"], [style*="font-size: 90px"], [style*="font-size: 80px"], [style*="font-size: 56px"] { max-width: 100vw !important; overflow: hidden !important; }
     section, footer, header, div, nav { max-width: 100vw !important; }
     img, svg, video, iframe { max-width: 100% !important; }
+  }
+  </style>
+  <style>
+  /* 761-1000px: step labels pushed "Back to Menu" off the right edge; keep the numbered steps, drop the words */
+  @media (min-width: 761px) and (max-width: 1000px) {
+    nav > div:first-of-type span[style*="white-space: nowrap"] { display: none !important; }
+    nav > div:first-of-type [style*="height: 1px"] { width: 16px !important; }
   }
   </style>
   <link rel="stylesheet" href="mobile.css">
@@ -110,7 +128,7 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
             </div>
           </sc-for>
           <div style="margin-top:24px;display:flex;gap:10px">
-            <input type="text" placeholder="Promo code" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px">
+            <input aria-label="Promo code" type="text" placeholder="Promo code" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px">
             <button onClick="{{ applyPromo }}" style="background:#2D6A4F;color:#fff;border:none;border-radius:2px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background 0.2s" style-hover="background:#40916C">Apply</button>
           </div>
           <sc-if value="{{ promoApplied }}" hint-placeholder-val="{{ false }}">
@@ -146,21 +164,21 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
           <div style="font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#C9A84C;margin-bottom:14px">Step 2 of 4</div>
           <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,52px);font-weight:600;color:#fff;margin-bottom:32px">{{ deliveryTitle }}</h1>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input type="text" placeholder="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input type="text" placeholder="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input aria-label="First Name" type="text" placeholder="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input aria-label="Last Name" type="text" placeholder="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Phone</label><input type="tel" placeholder="+44 7700 000 000" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Phone</label><input aria-label="Phone" type="tel" placeholder="+44 7700 000 000" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input aria-label="Email" type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
           </div>
           <sc-if value="{{ isDelivery }}" hint-placeholder-val="{{ true }}">
-            <div style="margin-bottom:14px"><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Street Address</label><input type="text" placeholder="123 Whitechapel Road" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div style="margin-bottom:14px"><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Street Address</label><input aria-label="Street Address" type="text" placeholder="123 Whitechapel Road" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">City</label><input type="text" placeholder="London" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Postcode</label><input type="text" placeholder="E1 1AB" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">City</label><input aria-label="City" type="text" placeholder="London" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Postcode</label><input aria-label="Postcode" type="text" placeholder="E1 1AB" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
             </div>
           </sc-if>
-          <div style="margin-bottom:26px"><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Special Instructions</label><textarea placeholder="Allergies, gate code, preferences…" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;resize:vertical;min-height:80px"></textarea></div>
+          <div style="margin-bottom:26px"><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Special Instructions</label><textarea aria-label="Special Instructions" placeholder="Allergies, gate code, preferences…" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;resize:vertical;min-height:80px"></textarea></div>
           <div style="display:flex;gap:12px">
             <button onClick="{{ goStep1 }}" style="background:transparent;border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.55);border-radius:2px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s" style-hover="border-color:rgba(255,255,255,0.4);color:#fff">← Back</button>
             <button onClick="{{ goStep3 }}" style="flex:1;background:#2D6A4F;color:#fff;border:none;border-radius:2px;padding:13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s" style-hover="background:#40916C">Continue to Payment →</button>
@@ -188,11 +206,11 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
           <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:3px;padding:28px;margin-bottom:18px">
             <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.48);margin-bottom:18px">💳 Card Details</div>
             <div style="display:flex;flex-direction:column;gap:14px">
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Name on Card</label><input type="text" placeholder="Ahmed Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:2px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Name on Card</label><input aria-label="Name on Card" type="text" placeholder="Ahmed Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Card Number</label><input aria-label="Card Number" type="text" placeholder="4242 4242 4242 4242" maxlength="19" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:2px"></div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-                <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">CVV</label><input type="text" placeholder="•••" maxlength="4" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+                <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Expiry</label><input aria-label="Expiry" type="text" placeholder="MM / YY" maxlength="7" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+                <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">CVV</label><input aria-label="CVV" type="text" placeholder="•••" maxlength="4" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
               </div>
             </div>
           </div>
