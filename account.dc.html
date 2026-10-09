@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +17,15 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://damal-immersive.vercel.app/og-thumb.jpg" />
+<!-- seo:start (title/description live here, not in <helmet>, so crawlers and link previews see them without JS) -->
+<title>My Account · Damal Restaurant</title>
+<meta name="description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu &amp; Hargeisa.">
+<link rel="canonical" href="https://damal-immersive.vercel.app/account">
+<!-- seo:end -->
 </head>
 <body>
 <x-dc>
 <helmet>
-  <title>Damal Restaurant · Authentic Somali Cuisine · East London</title>
-  <meta name="description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu & Hargeisa.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230A1F14'/><text x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23F0E6C8' text-anchor='middle'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -75,8 +78,8 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
         </div>
         <sc-if value="{{ isLoginView }}" hint-placeholder-val="{{ true }}">
           <div style="padding:32px;display:flex;flex-direction:column;gap:16px">
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Password</label><input type="password" placeholder="••••••••" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input aria-label="Email" type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Password</label><input aria-label="Password" type="password" placeholder="••••••••" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
             <button onClick="{{ doLogin }}" style="width:100%;background:#2D6A4F;color:#fff;border:none;border-radius:2px;padding:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s" style-hover="background:#40916C">Sign In →</button>
             <div style="text-align:center;font-size:12px;color:rgba(255,255,255,.47);cursor:pointer;transition:color 0.2s" style-hover="color:rgba(255,255,255,0.55)">Forgot your password?</div>
             <div style="text-align:center;font-size:11px;color:rgba(255,255,255,.46)">Demo: click Sign In with any details</div>
@@ -85,11 +88,11 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
         <sc-if value="{{ isRegisterView }}" hint-placeholder-val="{{ false }}">
           <div style="padding:32px;display:flex;flex-direction:column;gap:14px">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input type="text" placeholder="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input type="text" placeholder="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input aria-label="First Name" type="text" placeholder="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+              <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input aria-label="Last Name" type="text" placeholder="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:12px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
             </div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Password</label><input type="password" placeholder="Min. 8 characters" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input aria-label="Email" type="email" placeholder="you@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Password</label><input aria-label="Password" type="password" placeholder="Min. 8 characters" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
             <button onClick="{{ doLogin }}" style="width:100%;background:#C9A84C;color:#0A1F14;border:none;border-radius:2px;padding:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:4px" style-hover="background:#E9D283">Create Account →</button>
           </div>
         </sc-if>
@@ -154,10 +157,10 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
         <div style="font-size:13px;color:rgba(255,255,255,.48);margin-bottom:32px">Manage your account details</div>
         <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:32px;max-width:520px;display:flex;flex-direction:column;gap:16px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input type="text" value="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
-            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input type="text" value="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">First Name</label><input aria-label="First Name" type="text" value="Ahmed" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+            <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Last Name</label><input aria-label="Last Name" type="text" value="Hassan" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
           </div>
-          <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input type="email" value="ahmed@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
+          <div><label style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Email</label><input aria-label="Email" type="email" value="ahmed@example.com" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px"></div>
           <button style="background:#2D6A4F;color:#fff;border:none;border-radius:2px;padding:14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s" style-hover="background:#40916C">Save Changes</button>
         </div>
       </sc-if>

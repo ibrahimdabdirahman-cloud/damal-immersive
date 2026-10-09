@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +17,23 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://damal-immersive.vercel.app/og-thumb.jpg" />
+<!-- seo:start (title/description live here, not in <helmet>, so crawlers and link previews see them without JS) -->
+<title>Damal Restaurant · Authentic Somali Cuisine · East London</title>
+<meta name="description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu &amp; Hargeisa.">
+<link rel="canonical" href="https://damal-immersive.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Damal Restaurant">
+<meta property="og:title" content="Damal Restaurant · Authentic Somali Cuisine · East London">
+<meta property="og:description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu &amp; Hargeisa.">
+<meta property="og:url" content="https://damal-immersive.vercel.app/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:title" content="Damal Restaurant · Authentic Somali Cuisine · East London">
+<meta name="twitter:description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu &amp; Hargeisa.">
+<!-- seo:end -->
 </head>
 <body>
 <x-dc>
 <helmet>
-  <title>Damal Restaurant · Authentic Somali Cuisine · East London</title>
-  <meta name="description" content="Damal Restaurant — authentic Somali cuisine in Stepney Green, East London. Slow-cooked Haniid, fresh platters, and traditional flavours from Mogadishu & Hargeisa.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230A1F14'/><text x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23F0E6C8' text-anchor='middle'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -327,21 +338,21 @@ window.MASUL_MENU=[{"cat": "Breakfast", "name": "Ful Medames", "price": 6}, {"ca
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:14px;align-items:end">
       <div>
         <label style="font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Date</label>
-        <input type="date" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+        <input aria-label="Date" type="date" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
       </div>
       <div>
         <label style="font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Time</label>
-        <input type="time" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+        <input aria-label="Time" type="time" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
       </div>
       <div>
         <label style="font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Guests</label>
-        <select style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;appearance:none">
+        <select aria-label="Guests" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;appearance:none">
           <option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
         </select>
       </div>
       <div>
         <label style="font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.48);display:block;margin-bottom:8px">Name</label>
-        <input type="text" placeholder="Your name" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+        <input aria-label="Name" type="text" placeholder="Your name" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:2px;padding:13px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
       </div>
       <button type="button" data-masul-open="booking" style="background:#C9A84C;color:#0A1F14;border:none;border-radius:2px;padding:14px 26px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s" style-hover="background:#E9D283">Book Now</button>
     </div>
